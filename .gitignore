@@ -1,0 +1,53 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+media
+
+# If using virtualenv:
+venv/
+ENV/
+env/
+LIenv/
+.venv/
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# mypy
+.mypy_cache/
+
+# VS Code settings
+.vscode/
+
+# IDEs
+.idea/
+
+# macOS files
+.DS_Store
+
+# dotenv environment variables
+.env
+.env.*
+
+# static files collected by Django
+/staticfiles/
+
+# Django migrations - optional, but sometimes you want to keep them
+# ** uncomment if you want to ignore migrations **
+# */migrations/
+# */migrations/*.py
+# */migrations/*.pyc
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
