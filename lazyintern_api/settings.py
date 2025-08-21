@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,6 +53,13 @@ REST_FRAMEWORK = {
     )
 }
 
+SIMPLE_JWT = {
+     'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),
+     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+     'ROTATE_REFRESH_TOKENS': True,
+     'BLACKLIST_AFTER_ROTATION': True
+}
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -89,6 +97,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lazyintern_api.wsgi.application'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
