@@ -97,7 +97,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lazyintern_api.wsgi.application'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # or your email provider's SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'devibala231@gmail.com'  # email address
+EMAIL_HOST_PASSWORD = 'jonb pvij xsjq kzvd'  # app password
+DEFAULT_FROM_EMAIL = 'LazyIntern <devibala231@gmail.com>'  # Default from address
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

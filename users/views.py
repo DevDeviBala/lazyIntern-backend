@@ -80,19 +80,49 @@ def forgot_password(request):
             expires_at=expires_at
         )
         
-        # For development: Print to console instead of sending email
+        # Reset link
         reset_link = f"http://localhost:3000/reset-password/{token}"
-        print(f"Password reset link for {email}: {reset_link}")
+        
+        subject = "Password Reset Request"
+        message = f"""
+        Hello {user.first_name},
+        
+        You requested a password reset for your LazyIntern account.
+        
+        Please click the following link to reset your password:
+        {reset_link}
+        
+        This link will expire in 1 hour.
+        
+        If you didn't request this reset, please ignore this email.
+        
+        Best regards,
+        The LazyIntern Team
+        """
+        
+        from_email = "LazyIntern <noreply@lazyintern.com>"
+        
+        send_mail(
+            subject,
+            message,
+            from_email, 
+            [user.email],
+            fail_silently=False,
+        )
         
         return Response({
-            "message": "Password reset email sent",
-            "reset_link": reset_link  # Include for development
+            "message": "Password reset email sent"
         }, status=status.HTTP_200_OK)
         
     except User.DoesNotExist:
-        # Don't reveal that email doesn't exist for security
         return Response({"message": "If this email exists, a reset link has been sent"}, status=status.HTTP_200_OK)
-    
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return Response(
+            {"detail": "Error sending email. Please try again later."}, 
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
     
 @api_view(["POST"])
 @permission_classes([AllowAny])
