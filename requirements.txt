@@ -11,6 +11,7 @@ cookiecutter==2.6.0
 dj-database-url==3.0.1
 Django==5.0.7
 django-browser-reload==1.13.0
+django-cors-headers==4.7.0
 django-tailwind==3.8.0
 gunicorn==23.0.0
 idna==3.7
@@ -24,7 +25,6 @@ packaging==25.0
 Pygments==2.18.0
 python-dateutil==2.9.0.post0
 python-slugify==8.0.4
-pywin32==310
 PyYAML==6.0.1
 requests==2.32.3
 rich==13.7.1
